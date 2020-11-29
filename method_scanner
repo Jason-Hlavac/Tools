@@ -1,0 +1,13 @@
+import xmlrpc.client
+
+dictionary = {}
+
+link = xmlrpc.client.ServerProxy(input("Enter a URI: "))
+methods = link.system.listMethods()
+
+for i in range(0, len(methods)):
+    dictionary.update({str(methods[i]):( str(link.system.methodHelp(str(methods[i])))+ " Signature: " +str(link.system.methodSignature(str(methods[i]))))})
+    
+for key in methods:
+    print(key , " : " , dictionary[key])
+    print("="*50)
